@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://scripts/results.gd" type="Script" id=1]
+[ext_resource path="res://resources/silkscreen.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://scenes/badge_enemies.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/badge_nohit.tscn" type="PackedScene" id=4]
+
+[node name="results" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="current_label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 87.0
+margin/top = 92.0
+margin/right = 137.0
+margin/bottom = 123.0
+custom_fonts/font = ExtResource( 2 )
+text = "current:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="target_label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 87.0
+margin/top = 118.0
+margin/right = 156.0
+margin/bottom = 149.0
+custom_fonts/font = ExtResource( 2 )
+text = "target:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="pass_label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 87.0
+margin/top = 217.0
+margin/right = 342.0
+margin/bottom = 248.0
+custom_fonts/font = ExtResource( 2 )
+text = "Crisis aversion possible."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="command_label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 87.0
+margin/top = 239.0
+margin/right = 289.0
+margin/bottom = 270.0
+custom_fonts/font = ExtResource( 2 )
+text = "Press Z to continue"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="badge_enemies_label" type="Label" parent="."]
+
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 125.0
+margin/top = 185.0
+margin/right = 327.0
+margin/bottom = 216.0
+custom_fonts/font = ExtResource( 2 )
+text = "All Enemies Killed"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="badge_nohit_label" type="Label" parent="."]
+
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 285.0
+margin/top = 185.0
+margin/right = 487.0
+margin/bottom = 216.0
+custom_fonts/font = ExtResource( 2 )
+text = "No Damage Taken"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="show_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="badge_enemies" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 170, 174 )
+
+[node name="badge_nohit" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 330, 174 )
+
+

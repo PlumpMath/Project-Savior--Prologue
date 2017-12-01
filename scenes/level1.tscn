@@ -1,0 +1,172 @@
+[gd_scene load_steps=15 format=1]
+
+[ext_resource path="res://resources/tileset.res" type="TileSet" id=1]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/screen_cover.png" type="Texture" id=3]
+[ext_resource path="res://scripts/screen_cover.gd" type="Script" id=4]
+[ext_resource path="res://graphics/energybar.png" type="Texture" id=5]
+[ext_resource path="res://resources/silkscreen.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://scripts/label_time.gd" type="Script" id=7]
+[ext_resource path="res://scenes/badge_enemies.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/badge_nohit.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/bot.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/boss_flower.tscn" type="PackedScene" id=11]
+[ext_resource path="res://resources/shoot.smp" type="Sample" id=12]
+[ext_resource path="res://sounds/level.ogg" type="AudioStream" id=13]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/shoot = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 12 )
+}
+
+[node name="level1" type="Node2D"]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap" type="TileMap" parent="." groups=[
+"tiles",
+]]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 15
+collision/mask = 15
+occluder/light_mask = 1
+tile_data = IntArray( 131228, 5, 196763, 6, 196764, 7, 262299, 8, 262300, 9, 262357, 6, 262358, 7, 327835, 8, 327836, 9, 327893, 8, 327894, 9, 393371, 8, 393372, 9, 393429, 8, 393430, 9, 458897, 4, 458900, 5, 458907, 8, 458908, 9, 458911, 4, 458913, 4, 458965, 8, 458966, 9, 524423, 4, 524424, 4, 524429, 6, 524430, 3, 524431, 3, 524432, 0, 524433, 0, 524434, 2, 524435, 0, 524436, 0, 524437, 1, 524438, 0, 524439, 0, 524440, 2, 524441, 0, 524442, 0, 524443, 11, 524444, 10, 524445, 0, 524446, 0, 524447, 0, 524448, 0, 524449, 0, 524450, 0, 524451, 2, 524452, 0, 524453, 0, 524454, 3, 524455, 3, 524456, 0, 524457, 0, 524458, 2, 524459, 7, 524501, 8, 524502, 9, 589934, 5, 589938, 4, 589941, 5, 589942, 4, 589954, 6, 589955, 0, 589956, 1, 589957, 0, 589958, 0, 589959, 2, 589960, 0, 589961, 0, 589962, 0, 589963, 0, 589964, 0, 589965, 11, 589995, 9, 589998, 4, 590037, 8, 590038, 9, 655465, 6, 655466, 0, 655467, 0, 655468, 1, 655469, 0, 655470, 0, 655471, 2, 655472, 0, 655473, 0, 655474, 0, 655475, 0, 655476, 0, 655477, 0, 655478, 0, 655479, 3, 655480, 3, 655481, 0, 655482, 0, 655483, 2, 655484, 0, 655485, 0, 655486, 0, 655487, 1, 655488, 0, 655489, 0, 655490, 11, 655531, 10, 655532, 0, 655533, 0, 655534, 0, 655535, 1, 655536, 7, 655573, 8, 655574, 9, 721001, 8, 721072, 9, 721075, 4, 721109, 8, 721110, 9, 721150, 6, 721151, 0, 721152, 0, 721153, 0, 721154, 0, 721155, 0, 721156, 0, 721157, 0, 721158, 0, 721159, 0, 721160, 0, 721161, 0, 786435, 4, 786441, 5, 786446, 4, 786447, 4, 786456, 5, 786459, 4, 786537, 8, 786608, 10, 786609, 0, 786610, 0, 786611, 0, 786612, 0, 786613, 2, 786614, 0, 786615, 1, 786616, 7, 786645, 8, 786646, 9, 786686, 8, 851968, 0, 851969, 0, 851970, 1, 851971, 0, 851972, 0, 851973, 1, 851974, 0, 851975, 0, 851976, 2, 851977, 1, 851978, 0, 851979, 0, 851980, 0, 851981, 3, 851982, 3, 851983, 2, 851984, 0, 851985, 1, 851986, 3, 851987, 1, 851988, 2, 851989, 0, 851990, 0, 851991, 1, 851992, 0, 851993, 0, 851994, 2, 851995, 0, 851996, 0, 851997, 1, 851998, 7, 852032, 5, 852035, 4, 852073, 8, 852152, 9, 852157, 5, 852167, 4, 852176, 5, 852181, 8, 852182, 9, 852222, 8, 917534, 9, 917561, 5, 917562, 4, 917564, 6, 917565, 1, 917566, 3, 917567, 3, 917568, 0, 917569, 0, 917570, 2, 917571, 0, 917572, 0, 917573, 0, 917574, 1, 917575, 7, 917609, 8, 917688, 10, 917689, 0, 917690, 0, 917691, 0, 917692, 0, 917693, 0, 917694, 0, 917695, 0, 917696, 3, 917697, 0, 917698, 2, 917699, 0, 917700, 0, 917701, 1, 917702, 0, 917703, 0, 917704, 0, 917705, 3, 917706, 0, 917707, 1, 917708, 2, 917709, 0, 917710, 3, 917711, 0, 917712, 0, 917713, 0, 917714, 0, 917715, 2, 917716, 0, 917717, 11, 917718, 9, 917758, 8, 983070, 9, 983073, 4, 983078, 5, 983082, 4, 983088, 6, 983089, 1, 983090, 0, 983091, 2, 983092, 0, 983093, 0, 983094, 0, 983095, 3, 983096, 0, 983097, 0, 983098, 0, 983099, 0, 983100, 11, 983111, 9, 983145, 8, 983254, 9, 983294, 8, 1048606, 10, 1048607, 0, 1048608, 0, 1048609, 0, 1048610, 0, 1048611, 3, 1048612, 3, 1048613, 0, 1048614, 0, 1048615, 2, 1048616, 0, 1048617, 0, 1048618, 0, 1048619, 0, 1048620, 0, 1048621, 0, 1048622, 0, 1048623, 0, 1048624, 11, 1048647, 9, 1048681, 8, 1048790, 9, 1048830, 8, 1114183, 9, 1114217, 8, 1114326, 9, 1114366, 8, 1179719, 10, 1179720, 7, 1179753, 8, 1179862, 9, 1179902, 8, 1245256, 9, 1245289, 8, 1245398, 9, 1245438, 8, 1310792, 9, 1310825, 8, 1310934, 9, 1310974, 8, 1376328, 9, 1376361, 8, 1376470, 9, 1376510, 8, 1441864, 10, 1441865, 7, 1441896, 5, 1441897, 8, 1442006, 9, 1442046, 8, 1507401, 9, 1507432, 6, 1507433, 11, 1507543, 0, 1507544, 0, 1507545, 0, 1507546, 0, 1507547, 0, 1507548, 0, 1507549, 2, 1507550, 0, 1507551, 0, 1507552, 0, 1507553, 0, 1507554, 0, 1507555, 0, 1507556, 0, 1507557, 0, 1507558, 0, 1507559, 0, 1507560, 0, 1507561, 3, 1507562, 3, 1507563, 0, 1507564, 0, 1507565, 0, 1507566, 2, 1507567, 0, 1507568, 0, 1507569, 0, 1507570, 0, 1507571, 0, 1507572, 0, 1507573, 0, 1507574, 0, 1507575, 3, 1507576, 0, 1507577, 0, 1507578, 0, 1507579, 0, 1507580, 0, 1507581, 0, 1572937, 9, 1572967, 6, 1572968, 11, 1638473, 9, 1638503, 8, 1704009, 9, 1704039, 8, 1769545, 9, 1769573, 6, 1769574, 2, 1769575, 11, 1835081, 10, 1835082, 7, 1835092, 4, 1835094, 5, 1835106, 4, 1835108, 6, 1835109, 11, 1900619, 0, 1900620, 0, 1900621, 0, 1900622, 0, 1900623, 1, 1900624, 2, 1900625, 0, 1900626, 3, 1900627, 0, 1900628, 0, 1900629, 0, 1900630, 0, 1900631, 0, 1900632, 0, 1900633, 2, 1900634, 0, 1900635, 1, 1900636, 2, 1900637, 0, 1900638, 3, 1900639, 3, 1900640, 3, 1900641, 0, 1900642, 0, 1900643, 0, 1900644, 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="screen_cover" type="Sprite" parent="CanvasLayer"]
+
+z/z = 100
+texture = ExtResource( 3 )
+centered = false
+script/script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="energybar" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 8.38233, 7.18486 )
+z/z = 10
+texture = ExtResource( 5 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 192, 48 )
+
+[node name="label_time" type="Label" parent="CanvasLayer"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 402.0
+margin/top = 8.0
+margin/right = 470.0
+margin/bottom = 39.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "00 : 00
+"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script/script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="badge_enemies" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="badge_nohit" parent="CanvasLayer" instance=ExtResource( 9 )]
+
+[node name="enemies" type="Node2D" parent="."]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bot" parent="enemies" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 373.896, 186.711 )
+
+[node name="bot1" parent="enemies" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 1074.17, 204.44 )
+
+[node name="bot2" parent="enemies" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 1336.78, 441.559 )
+
+[node name="bot3" parent="enemies" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 1517.39, 442.667 )
+
+[node name="bot4" parent="enemies" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 2498, 29.3706 )
+
+[node name="bot5" parent="enemies" instance=ExtResource( 10 )]
+
+transform/pos = Vector2( 3113.95, 202.981 )
+
+[node name="boss_flower" parent="enemies" instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 3820.73, 176.958 )
+
+[node name="SamplePlayer" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 1 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 13 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+
